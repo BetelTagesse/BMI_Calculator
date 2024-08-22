@@ -94,8 +94,17 @@ class _MyHomePageState extends State<MyHomePage> {
                     var tCm = tInch * 2.54;
                     var tM = tCm / 100;
                     var BMI = iWt / (tM * tM);
+
+                    var msg = "";
+                    if (BMI > 25) {
+                      msg = 'you are obese';
+                    } else if (BMI < 18) {
+                      msg = 'You are under weight';
+                    } else {
+                      msg = 'you are healthy!';
+                    }
                     setState(() {
-                      result = "your BMI is $BMI";
+                      result = "  your BMI is ${BMI.toStringAsFixed(4)} $msg";
                     });
                   } else {
                     setState(() {
@@ -104,6 +113,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   }
                 },
                 child: Text('Calculate'),
+              ),
+              SizedBox(
+                height: 11,
               ),
               Text(result)
             ],
